@@ -6,7 +6,7 @@ import customTheme from '../../theme';
 function Home() {
   return (
     <Flex w="100%" flexDirection="row" justifyContent="center" alignContent="center">
-  <Box w='80vw' h='auto' marginTop="50px" rounded="md" bg={customTheme.themeColors[200]} boxShadow="xl" justifyContent="center">
+  <Box w='95%' h='auto' marginTop="50px" marginBottom="50px" rounded="md" bg={customTheme.themeColors[200]} boxShadow="xl" justifyContent="center">
     <Flex w="100%" padding="10" flexDirection="column" justifyContent="center" alignContent="center">
     <Stack spacing={8} p={8}>
     <Flex width="100%" justifyContent="center">

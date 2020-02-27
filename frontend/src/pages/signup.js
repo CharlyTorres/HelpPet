@@ -1,4 +1,5 @@
-import React from 'react';
+import React from 'react'
+import { MyContext } from '../context'
 import {
   Flex,
   FormControl,
@@ -10,92 +11,63 @@ import {
 } from '@chakra-ui/core'
 import Form from '../components/Form'
 
-function Signup() {
-  return (
+
+export default function Signup() {
+  return ( 
+  <MyContext.Consumer>
+  {context => (
     <Flex w="100%" alignContent="center" justify="center" >
-    <Form onSubmit="submit" title="Registrate">
+    <Form submit={context.handleSignupSubmit} title="Registrate">
     <FormControl isRequired>
         <InputGroup>
           <InputLeftAddon children={<Icon name="name" />} />
           <Input
-     //       onChange={context.handleLoginInput}
+            onChange={context.handleSignupInput}
             placeholder="Nombre"
             name="name"
             type="name"
+            value= {context.state.formSignup.name}
           />
         </InputGroup>
         </FormControl>
 
         <FormControl isRequired>
         <InputGroup>
-          <InputLeftAddon children={<Icon name="estado" />} />
-          <Select placeholder="Estado de la republica">
+          <InputLeftAddon children={<Icon name="state" />} />
+          <Select onChange={context.handleSignupInput} name="state" type="state" placeholder="Estado de la republica" value= {context.state.formSignup.state}>
 
-            <option value="0">Todo México</option>
-
-            <option value="1">Aguascalientes</option>
-
-            <option value="2">Baja California</option>
-
-            <option value="3">Baja California Sur</option>
-
-            <option value="4">Campeche</option>
-
-            <option value="5">Coahuila de Zaragoza</option>
-
-            <option value="6">Colima</option>
-
-            <option value="7">Chiapas</option>
-
-            <option value="8">Chihuahua</option>
-
-            <option value="9">Distrito Federal</option>
-
-            <option value="10">Durango</option>
-
-            <option value="11">Guanajuato</option>
-
-            <option value="12">Guerrero</option>
-
-            <option value="13">Hidalgo</option>
-
-            <option value="14">Jalisco</option>
-
-            <option value="15">México</option>
-
-            <option value="16">Michoacán de Ocampo</option>
-
-            <option value="17">Morelos</option>
-
-            <option value="18">Nayarit</option>
-
-            <option value="19">Nuevo León</option>
-
-            <option value="20">Oaxaca</option>
-
-            <option value="21">Puebla</option>
-
-            <option value="22">Querétaro</option>
-
-            <option value="23">Quintana Roo</option>
-
-            <option value="24">San Luis Potosí</option>
-
-            <option value="25">Sinaloa</option>
-
-            <option value="26">Sonora</option>
-
-            <option value="27">Tabasco</option>
-
-            <option value="28">Tamaulipas</option>
-
-            <option value="29">Tlaxcala</option>
-
-            <option value="30">Veracruz de Ignacio de la Llave</option>
-
-            <option value="31">Yucatán</option>
-
-            <option value="32">Zacatecas</option>
+      <option value="Aguascalientes">Aguascalientes</option>
+      <option value="Baja California">Baja California</option>
+      <option value="Baja California Sur">Baja California Sur</option>
+      <option value="Campeche">Campeche</option>
+      <option value="Chiapas">Chiapas</option>
+      <option value="Chihuahua">Chihuahua</option>
+      <option value="Coahuila">Coahuila</option>
+      <option value="Colima">Colima</option>
+      <option value="CDMX">CDMX</option>
+      <option value="Durango">Durango</option>
+      <option value="Estado de México">Estado de México</option>
+      <option value="Guanajuato">Guanajuato</option>
+      <option value="Guerrero">Guerrero</option>
+      <option value="Hidalgo">Hidalgo</option>
+      <option value="Jalisco">Jalisco</option>
+      <option value="Michoacán">Michoacán</option>
+      <option value="Morelos">Morelos</option>
+      <option value="Nayarit">Nayarit</option>
+      <option value="Nuevo León">Nuevo León</option>
+      <option value="Oaxaca">Oaxaca</option>
+      <option value="Puebla">Puebla</option>
+      <option value="Querétaro">Querétaro</option>
+      <option value="Quintana Roo">Quintana Roo</option>
+      <option value="San Luis Potosí">San Luis Potosí</option>
+      <option value="Sinaloa">Sinaloa</option>
+      <option value="Sonora">Sonora</option>
+      <option value="Tabasco">Tabasco</option>
+      <option value="Tamaulipas">Tamaulipas</option>
+      <option value="Tlaxcala">Tlaxcala</option>
+      <option value="Veracruz">Veracruz</option>
+      <option value="Yucatán">Yucatán</option>
+      <option value="Zacatecas">Zacatecas</option>
 
         </Select>
         </InputGroup>
@@ -105,10 +77,11 @@ function Signup() {
         <InputGroup>
           <InputLeftAddon children={<Icon name="other" />} />
           <Input
-     //       onChange={context.handleLoginInput}
+            onChange={context.handleSignupInput}
             placeholder="Edad"
             name="age"
             type="number"
+            value= {context.state.formSignup.age}
           />
         </InputGroup>
       </FormControl>
@@ -117,10 +90,11 @@ function Signup() {
         <InputGroup>
           <InputLeftAddon children={<Icon name="email" />} />
           <Input
-     //       onChange={context.handleLoginInput}
+            onChange={context.handleSignupInput}
             placeholder="Correo electronico"
             name="email"
             type="email"
+            value= {context.state.formSignup.email}
           />
         </InputGroup>
       </FormControl>
@@ -129,15 +103,17 @@ function Signup() {
         <InputGroup>
           <InputLeftAddon children={<Icon name="lock" />} />
           <Input
+            onChange={context.handleSignupInput}
             placeholder="Contraseña"
             name="password"
             type="password"
+            value= {context.state.formSignup.password}
           />
         </InputGroup>
       </FormControl>
     </Form>
   </Flex>
-  );
+  )}
+  </MyContext.Consumer>
+  )
 }
-
-export default Signup;

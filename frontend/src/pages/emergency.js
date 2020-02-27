@@ -1,5 +1,4 @@
 import React from 'react';
-import { MyContext } from '../context'
 import {
   Flex,
   FormControl,
@@ -10,17 +9,15 @@ import {
 } from '@chakra-ui/core'
 import Form from '../components/Form'
 
-function Login() {
+function Emergency() {
   return (
-    <MyContext.Consumer>
-    {context =>
     <Flex w="100%" alignContent="center" justifyContent="center">
-    <Form submit={context.handleLoginSubmit} title="Iniciar Sesión">
+    <Form onSubmit="submit" title="Iniciar Sesión">
       <FormControl isRequired>
         <InputGroup>
           <InputLeftAddon children={<Icon name="email" />} />
           <Input
-            onChange={context.handleLoginInput}
+     //       onChange={context.handleLoginInput}
             placeholder="Correo electronico"
             name="email"
             type="email"
@@ -31,7 +28,6 @@ function Login() {
         <InputGroup>
           <InputLeftAddon children={<Icon name="lock" />} />
           <Input
-            onChange={context.handleLoginInput}
             placeholder="Contraseña"
             name="password"
             type="password"
@@ -40,9 +36,7 @@ function Login() {
       </FormControl>
     </Form>
   </Flex>
-    }
-  </MyContext.Consumer>
   );
 }
 
-export default Login;
+export default Emergency;

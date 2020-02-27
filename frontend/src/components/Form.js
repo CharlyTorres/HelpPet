@@ -3,10 +3,10 @@ import React from 'react'
 import { Box, Stack, Button, Heading } from '@chakra-ui/core'
 import customTheme from '../theme'
 
-function Form({ width, children, title, submit }) {
+function Form({ children, title, submit }) {
   return (
-    <Box onSubmit={submit} as="form" w={width || '350px'} marginTop="50px" rounded="md" bg={customTheme.themeColors[200]} boxShadow="xl">
-      <Stack spacing={8} p={8}>
+    <Box onSubmit={submit} as="form" w="95vw" marginTop="50px" marginBottom="50px" rounded="md" bg={customTheme.themeColors[200]} boxShadow="xl">
+      <Stack spacing={8} margin={8}>
         <Heading textAlign="center" as="h1">
           {title}
         </Heading>
