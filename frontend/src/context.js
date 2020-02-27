@@ -20,11 +20,10 @@ class MyProvider extends Component {
         },
         loggedUser: null,
         isLogged: false,
-        redirect: false
     }
 
     handleLogout = async () => {
-        await MY_SERVICE.LOGOUT()
+        await MY_SERVICE.logOut()
         this.props.history.push('/')
         this.setState({ loggedUser: null, isLogged: false })
       }
@@ -44,14 +43,10 @@ class MyProvider extends Component {
       }
 
     handleSignupSubmit = async e => {
-/*         e.preventDefault()
-        const user = this.state.formSignup
-        this.setState({ formSignup: { name: '', email: '', state: '', age: '', password: '' } })
-        return await MY_SERVICE.signup(user) */
         e.preventDefault()
         const { name, email, password, age, state } = this.state.formSignup
         MY_SERVICE.signup({ name, email, password, age, state })
-          .then(() => {
+          .then((res) => {
             this.setState(prevState => ({
               ...prevState,
               formSignup: {
@@ -75,14 +70,13 @@ class MyProvider extends Component {
         e.preventDefault()
         const form = this.state.formLogin
         return MY_SERVICE.login(form)
-          .then(({ user }) => {
+          .then(({ data }) => {
             this.setState({
-              loggedUser: user,
+              loggedUser: data.user,
               isLogged: true
             })
             alert('Sesión Iniciada')
-            this.props.history.push('/login')
-            
+            this.props.history.push('/profile')
           })
           .catch(err => {
             this.setState({

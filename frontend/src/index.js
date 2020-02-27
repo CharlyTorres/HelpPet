@@ -30,13 +30,4 @@ function WithContext() {
 
 ReactDOM.render(<WithContext />, document.getElementById('root'))
 
-/* ReactDOM.render(
-<BrowserRouter 
-w="100vw">
-    <ThemeProvider theme={theme}>
-      <CSSReset />
-      <Router /> 
- </ThemeProvider>
-  </BrowserRouter>, document.getElementById('root')); */
-
 serviceWorker.unregister();

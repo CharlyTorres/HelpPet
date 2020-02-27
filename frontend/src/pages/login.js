@@ -1,12 +1,13 @@
 import React from 'react';
 import { MyContext } from '../context'
+import { FaKey, FaRegEnvelope } from "react-icons/fa";
 import {
   Flex,
   FormControl,
   InputGroup,
   InputLeftAddon,
   Input,
-  Icon
+  Box
 } from '@chakra-ui/core'
 import Form from '../components/Form'
 
@@ -18,7 +19,7 @@ function Login() {
     <Form submit={context.handleLoginSubmit} title="Iniciar Sesión">
       <FormControl isRequired>
         <InputGroup>
-          <InputLeftAddon children={<Icon name="email" />} />
+          <InputLeftAddon children={<Box as={FaRegEnvelope} />} />
           <Input
             onChange={context.handleLoginInput}
             placeholder="Correo electronico"
@@ -29,7 +30,7 @@ function Login() {
       </FormControl>Home
       <FormControl isRequired>
         <InputGroup>
-          <InputLeftAddon children={<Icon name="lock" />} />
+          <InputLeftAddon children={<Box as={FaKey} />} />
           <Input
             onChange={context.handleLoginInput}
             placeholder="Contraseña"

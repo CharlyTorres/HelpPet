@@ -1,5 +1,6 @@
 import React from 'react'
 import { MyContext } from '../context'
+import { FaUserCircle, FaCity, FaUserCheck, FaKey, FaRegEnvelope } from "react-icons/fa";
 import {
   Flex,
   FormControl,
@@ -7,7 +8,7 @@ import {
   InputLeftAddon,
   Input,
   Select,
-  Icon
+  Box
 } from '@chakra-ui/core'
 import Form from '../components/Form'
 
@@ -20,7 +21,7 @@ export default function Signup() {
     <Form submit={context.handleSignupSubmit} title="Registrate">
     <FormControl isRequired>
         <InputGroup>
-          <InputLeftAddon children={<Icon name="name" />} />
+          <InputLeftAddon children={<Box as={FaUserCircle} />} />
           <Input
             onChange={context.handleSignupInput}
             placeholder="Nombre"
@@ -33,7 +34,7 @@ export default function Signup() {
 
         <FormControl isRequired>
         <InputGroup>
-          <InputLeftAddon children={<Icon name="state" />} />
+          <InputLeftAddon children={<Box as={FaCity} />} />
           <Select onChange={context.handleSignupInput} name="state" type="state" placeholder="Estado de la republica" value= {context.state.formSignup.state}>
 
       <option value="Aguascalientes">Aguascalientes</option>
@@ -75,7 +76,7 @@ export default function Signup() {
 
         <FormControl isRequired>
         <InputGroup>
-          <InputLeftAddon children={<Icon name="other" />} />
+          <InputLeftAddon children={<Box as={FaUserCheck} />} />
           <Input
             onChange={context.handleSignupInput}
             placeholder="Edad"
@@ -88,7 +89,7 @@ export default function Signup() {
 
       <FormControl isRequired>
         <InputGroup>
-          <InputLeftAddon children={<Icon name="email" />} />
+          <InputLeftAddon children={<Box as={FaRegEnvelope} />} />
           <Input
             onChange={context.handleSignupInput}
             placeholder="Correo electronico"
@@ -101,7 +102,7 @@ export default function Signup() {
 
       <FormControl isRequired>
         <InputGroup>
-          <InputLeftAddon children={<Icon name="lock" />} />
+          <InputLeftAddon children={<Box as={FaKey} />} />
           <Input
             onChange={context.handleSignupInput}
             placeholder="Contraseña"
