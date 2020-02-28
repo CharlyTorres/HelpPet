@@ -17,7 +17,7 @@ function Give() {
     <MyContext.Consumer>
     {context =>
     <Flex w="100%" alignContent="center" justifyContent="center">
-    <Form onSubmit={context.handleCreatePetSubmit} title="Formulario para dar en adopción">
+    <Form submit={context.handlePetSubmit} title="Formulario para dar en adopción">
 
         <InputGroup>
           <InputLeftAddon children={<Box as={FaDog} />} />
@@ -27,6 +27,7 @@ function Give() {
             placeholder="Nombre de la mascota (no es necesario)"
             name="name"
             type="text"
+            value={context.state.formCreatePet.name}
           />
         </InputGroup>
 
@@ -39,6 +40,7 @@ function Give() {
             placeholder="Edad de la mascota (aproximada)"
             name="age"
             type="text"
+            value= {context.state.formCreatePet.age}
           />
         </InputGroup>
       </FormControl>
@@ -51,6 +53,7 @@ function Give() {
             placeholder="Tipo de Mascota"
             name="typeOfPet"
             type="text"
+            value= {context.state.formCreatePet.typeOfPet}
           >
             <option value="Dog">Perro</option>
             <option value="Cat">Gato</option>
@@ -81,6 +84,7 @@ function Give() {
             placeholder="Descripción de la mascota"
             name="description"
             type="text"
+            value={context.state.formCreatePet.description}
          />
         </InputGroup>
       </FormControl>

@@ -3,8 +3,9 @@ const router = express.Router();
 const Pet = require('../models/Pet');
 
 router.post('/give', (req, res, next) => {
-  Pet.create(req.body)
-    .then((user) => res.status(201).json({ user }))
+  const {name, size, age, typeOfPet, description, giver, photoURL} = req.body
+  Pet.create({name, size, age, typeOfPet, description, giver, photoURL})
+    .then((pet) => res.status(201).json({ pet }))
     .catch((err) => res.status(500).json({ err }));
 });
 

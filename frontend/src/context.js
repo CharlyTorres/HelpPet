@@ -110,7 +110,6 @@ class MyProvider extends Component {
       handlePetSubmit = e => {
         const { name, size, age, typeOfPet, description } = this.state.formCreatePet
         e.preventDefault()
-        const form = this.state.formCreatePet
         return MY_SERVICE.createAdoption({name, size, age, typeOfPet, description})
         .then((res) => {
           this.setState(prevState => ({
@@ -156,7 +155,9 @@ class MyProvider extends Component {
             handleLoginInput,
             handleSignupInput,
             handleLogout,
-            handleFile
+            handleFile,
+            handlePetSubmit,
+            handleCreatePetInput
          } = this
 
          return (
@@ -168,7 +169,9 @@ class MyProvider extends Component {
                     handleLoginInput,
                     handleSignupInput,
                     handleLogout,
-                    handleFile
+                    handleFile,
+                    handlePetSubmit,
+                    handleCreatePetInput
                 }}
                 >
             {this.props.children}

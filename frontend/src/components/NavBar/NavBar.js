@@ -47,7 +47,7 @@ export default function Navbar() {
                 Iniciar Sesión
          </Link>
         </MenuItem>
-        <MenuItem>        
+        <MenuItem to="/signup">        
          <Link {...styles} fontSize={["sm", "md", "lg", "xl"]} exact to="/signup">
                 Registrate
          </Link>

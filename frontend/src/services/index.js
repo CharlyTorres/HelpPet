@@ -21,8 +21,8 @@ const MY_SERVICE = {
     return await service.get('/logout');
   },
 
-  createAdoption: async () => {
-    return await service.get('/give');
+  createAdoption: async (pet) => {
+    return await service.post('/give', pet);
   },
 
   uploadPhoto: async photo => {
