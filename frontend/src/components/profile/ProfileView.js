@@ -1,8 +1,14 @@
 import React from 'react'
 import { MyContext } from '../../context'
-import { Box, Image, Flex } from '@chakra-ui/core'
+import { Box, Image, Flex, Input, Button } from '@chakra-ui/core'
+import { FaCloudUploadAlt } from "react-icons/fa";
+import customTheme from '../../theme'
+
 
 function ProfileView() {
+  const changePic = () => {
+    document.getElementById('profilePic').click()
+  }
   return (
     <MyContext.Consumer>
       {context => {
@@ -15,6 +21,8 @@ function ProfileView() {
               src={context.state.loggedUser.photoURL}
               alt={context.state.loggedUser.name}
             />
+            <Button bg={customTheme.themeColors[500]} leftIcon={FaCloudUploadAlt} onClick={changePic}>Cambiar foto de perfil</Button>
+            <Input display="none" id="profilePic" name="photoURL" onChange={context.handleFile} type="file" />
             <h1>Nombre: {context.state.loggedUser.name}</h1>
             <h1>Estado: {context.state.loggedUser.state}</h1>
             <h1>Edad: {context.state.loggedUser.age} años</h1>

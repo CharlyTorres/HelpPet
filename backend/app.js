@@ -47,6 +47,8 @@ app.use(logger('dev'));
 
 const index = require('./routes/index');
 const auth = require('./routes/auth');
+const pet = require('./routes/pet')
+app.use('/', pet)
 app.use('/', index);
 app.use('/', auth);
 

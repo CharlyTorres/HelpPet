@@ -1,4 +1,5 @@
 import React from 'react';
+import { MyContext } from '../context'
 import { FaDog, FaCat, FaDragon, FaImage } from "react-icons/fa";
 import {
   Flex,
@@ -13,15 +14,18 @@ import Form from '../components/Form'
 
 function Give() {
   return (
+    <MyContext.Consumer>
+    {context =>
     <Flex w="100%" alignContent="center" justifyContent="center">
-    <Form onSubmit="submit" title="Formulario para dar en adopción">
+    <Form onSubmit={context.handleCreatePetSubmit} title="Formulario para dar en adopción">
 
         <InputGroup>
           <InputLeftAddon children={<Box as={FaDog} />} />
           <Input
-     //       onChange={context.handleLoginInput}
+            fontSize={["8px", "md", "lg", "xl"]}
+            onChange={context.handleCreatePetInput}
             placeholder="Nombre de la mascota (no es necesario)"
-            name="petName"
+            name="name"
             type="text"
           />
         </InputGroup>
@@ -30,8 +34,10 @@ function Give() {
         <InputGroup>
           <InputLeftAddon children={<Box as={FaCat} />} />
           <Input
+            onChange={context.handleCreatePetInput}
+            fontSize={["8px", "md", "lg", "xl"]}
             placeholder="Edad de la mascota (aproximada)"
-            name="petAge"
+            name="age"
             type="text"
           />
         </InputGroup>
@@ -41,8 +47,9 @@ function Give() {
         <InputGroup>
           <InputLeftAddon children={<Box as={FaDragon} />} />
           <Select
+            onChange={context.handleCreatePetInput}
             placeholder="Tipo de Mascota"
-            name="petType"
+            name="typeOfPet"
             type="text"
           >
             <option value="Dog">Perro</option>
@@ -56,9 +63,10 @@ function Give() {
         <InputGroup>
         <InputLeftAddon children={<Box as={FaImage} />} />
           <Input
+            fontSize={["8px", "md", "lg", "xl"]}
             placeholder="Foto de la mascota (URL)"
             name="petPhoto"
-            type="text"
+            type="file"
          />
         </InputGroup>
       </FormControl>
@@ -67,15 +75,19 @@ function Give() {
       <FormControl isRequired>
         <InputGroup>
           <Input
+            onChange={context.handleCreatePetInput}
+            fontSize={["8px", "md", "lg", "xl"]}
             height="10vh"
             placeholder="Descripción de la mascota"
-            name="petDescription"
+            name="description"
             type="text"
          />
         </InputGroup>
       </FormControl>
     </Form>
   </Flex>
+    }
+  </MyContext.Consumer>
   );
 }
 

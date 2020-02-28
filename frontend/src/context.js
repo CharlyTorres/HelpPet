@@ -14,10 +14,20 @@ class MyProvider extends Component {
             age: '',
             password: ''
         },
+
         formLogin: {
             email: '',
             password: '',
         },
+
+        formCreatePet: {
+          name: '',
+          size: '',
+          age: '',
+          typeOfPet: '',
+          description: '',
+        },
+
         loggedUser: null,
         isLogged: false,
     }
@@ -40,6 +50,13 @@ class MyProvider extends Component {
         const { name, value } = e.target
         formLogin[name] = value
         this.setState({ formLogin })
+      }
+
+    handleCreatePetInput = e => {
+        const { formCreatePet } = this.state
+        const { name, value } = e.target
+        formCreatePet[name] = value
+        this.setState({ formCreatePet })
       }
 
     handleSignupSubmit = async e => {
@@ -88,6 +105,47 @@ class MyProvider extends Component {
           })
           .finally(() => this.setState({ formLogin: { email: '', password: '' } }))
       }
+
+
+      handlePetSubmit = e => {
+        const { name, size, age, typeOfPet, description } = this.state.formCreatePet
+        e.preventDefault()
+        const form = this.state.formCreatePet
+        return MY_SERVICE.createAdoption({name, size, age, typeOfPet, description})
+        .then((res) => {
+          this.setState(prevState => ({
+            ...prevState,
+            formCreatePet: {
+              name: '',
+              size: '',
+              age: '',
+              typeOfPet: '',
+              description: ''
+            }
+          }))
+          alert('Mascota para adopción creada!')
+          this.props.history.push('/adopt')
+        })
+        .catch(() => {
+          alert('Hubo un error, porfavor revisa los campos e intenta de nuevo.')
+        })
+
+
+      }
+
+
+      handleFile = e => {
+        const formData = new FormData()
+        formData.append('photoURL', e.target.files[0])
+        MY_SERVICE.uploadPhoto(formData)
+          .then(({ data }) => {
+            this.setState({ loggedUser: data.user })
+          })
+          .catch(err => {
+            console.log(err)
+          })
+      }
+
     
     render() {
 
@@ -97,7 +155,8 @@ class MyProvider extends Component {
             handleSignupSubmit,
             handleLoginInput,
             handleSignupInput,
-            handleLogout
+            handleLogout,
+            handleFile
          } = this
 
          return (
@@ -108,7 +167,8 @@ class MyProvider extends Component {
                     handleSignupSubmit,
                     handleLoginInput,
                     handleSignupInput,
-                    handleLogout
+                    handleLogout,
+                    handleFile
                 }}
                 >
             {this.props.children}

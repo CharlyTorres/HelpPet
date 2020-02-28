@@ -1,18 +1,22 @@
 const { Schema, model } = require('mongoose')
 const PLM = require('passport-local-mongoose')
 
-const animalSchema = new Schema(
+const petSchema = new Schema(
   {
     name: String,
     size: String,
-    typeOfAnimal: String,
-    race: String,
+    typeOfPet: String,
     description: String,
+    age: String,
     giver: {
       type: Schema.Types.ObjectId,
       ref: 'User'
     },
-    photoURL: String
+    photoURL: {
+      type: String,
+      default:
+        'https://www.brantcountyspca.com/wp-content/uploads/cache/images/remote/i0-wp-com/animals-4133566325.jpg'
+    },
   },
   {
     timestamps: true,
@@ -20,4 +24,4 @@ const animalSchema = new Schema(
   }
 )
 
-module.exports = model('Animal', animalSchema)
+module.exports = model('Pet', petSchema)
