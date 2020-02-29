@@ -28,8 +28,13 @@ class MyProvider extends Component {
           description: '',
         },
 
+        cats: [],
         loggedUser: null,
         isLogged: false,
+    }
+
+    componentDidMount(){
+      this.showingPets()
     }
 
     handleLogout = async () => {
@@ -81,13 +86,17 @@ class MyProvider extends Component {
             alert('Hubo un error, porfavor revisa los campos e intenta de nuevo.')
           })
       } 
-      
+
+    showingPets = async () => {
+      const {data}  = await MY_SERVICE.showingCats();
+      this.setState({ cats: data.pet });
+    }      
     
     handleLoginSubmit = e => {
         e.preventDefault()
         const form = this.state.formLogin
         return MY_SERVICE.login(form)
-          .then(({ data }) => {
+          .then(({data}) => {
             this.setState({
               loggedUser: data.user,
               isLogged: true
@@ -108,10 +117,10 @@ class MyProvider extends Component {
 
 
       handlePetSubmit = e => {
-        const { name, size, age, typeOfPet, description } = this.state.formCreatePet
         e.preventDefault()
+        const { name, size, age, typeOfPet, description } = this.state.formCreatePet
         return MY_SERVICE.createAdoption({name, size, age, typeOfPet, description})
-        .then((res) => {
+        .then(() => {
           this.setState(prevState => ({
             ...prevState,
             formCreatePet: {
@@ -157,7 +166,8 @@ class MyProvider extends Component {
             handleLogout,
             handleFile,
             handlePetSubmit,
-            handleCreatePetInput
+            handleCreatePetInput,
+            showingPets
          } = this
 
          return (
@@ -171,7 +181,8 @@ class MyProvider extends Component {
                     handleLogout,
                     handleFile,
                     handlePetSubmit,
-                    handleCreatePetInput
+                    handleCreatePetInput,
+                    showingPets
                 }}
                 >
             {this.props.children}

@@ -25,6 +25,10 @@ const MY_SERVICE = {
     return await service.post('/give', pet);
   },
 
+  showingCats: async () => {
+    return await service.get('/adopt')
+  },
+
   uploadPhoto: async photo => {
     return await service.post('/upload', photo)
   }

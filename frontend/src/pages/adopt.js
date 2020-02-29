@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react'
+import { MyContext } from '../context'
+import PetCard from '../components/Pet/Pet'
 
-function Adopt() {
-  return (
-   <h1>Adoptame!</h1>
-  );
+class Cats extends Component {
+    
+
+  render() {
+    return <PetCard />
+  }
 }
 
-export default Adopt;
+export default Cats
+
+Cats.contextType = MyContext
