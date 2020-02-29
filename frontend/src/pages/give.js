@@ -62,14 +62,58 @@ function Give() {
         </InputGroup>
       </FormControl>
 
-      <FormControl isRequired>
+      <FormControl>
         <InputGroup>
         <InputLeftAddon children={<Box as={FaImage} />} />
           <Input
+            onChange={context.handleCreatePetInput}
+            value= {context.state.formCreatePet.photoURL}
             fontSize={["8px", "md", "lg", "xl"]}
             placeholder="Foto de la mascota (URL)"
-            name="petPhoto"
-            type="file"
+            name="photoURL"
+            type="text"
+         />
+        </InputGroup>
+      </FormControl>
+
+      <FormControl>
+        <InputGroup>
+        <InputLeftAddon children={<Box as={FaImage} />} />
+          <Input
+            onChange={context.handleCreatePetInput}
+            value= {context.state.formCreatePet.vaccine}
+            fontSize={["8px", "md", "lg", "xl"]}
+            placeholder="Está vacunado?"
+            name="vaccine"
+            type="text"
+         />
+        </InputGroup>
+      </FormControl>
+
+      <FormControl>
+        <InputGroup>
+        <InputLeftAddon children={<Box as={FaImage} />} />
+          <Input
+            onChange={context.handleCreatePetInput}
+            value= {context.state.formCreatePet.sterilized}
+            fontSize={["8px", "md", "lg", "xl"]}
+            placeholder="Está esterilizado?"
+            name="sterilized"
+            type="text"
+         />
+        </InputGroup>
+      </FormControl>
+
+      <FormControl>
+        <InputGroup>
+        <InputLeftAddon children={<Box as={FaImage} />} />
+          <Input
+            onChange={context.handleCreatePetInput}
+            value= {context.state.formCreatePet.dewormed}
+            fontSize={["8px", "md", "lg", "xl"]}
+            placeholder="Está desparazitado?"
+            name="dewormed"
+            type="text"
          />
         </InputGroup>
       </FormControl>

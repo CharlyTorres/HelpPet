@@ -26,15 +26,21 @@ class MyProvider extends Component {
           age: '',
           typeOfPet: '',
           description: '',
+          dewormed: '',
+          vaccine: '',
+          sterilized: '',
+          photoURL: ''
         },
 
         cats: [],
+        dogs: [],
         loggedUser: null,
         isLogged: false,
     }
 
     componentDidMount(){
-      this.showingPets()
+      this.showingCats()
+      this.showingDogs()
     }
 
     handleLogout = async () => {
@@ -87,10 +93,15 @@ class MyProvider extends Component {
           })
       } 
 
-    showingPets = async () => {
+    showingCats = async () => {
       const {data}  = await MY_SERVICE.showingCats();
       this.setState({ cats: data.pet });
-    }      
+    }  
+    
+    showingDogs = async () => {
+      const {data}  = await MY_SERVICE.showingDogs();
+      this.setState({ dogs: data.pet });
+    }
     
     handleLoginSubmit = e => {
         e.preventDefault()
@@ -118,8 +129,8 @@ class MyProvider extends Component {
 
       handlePetSubmit = e => {
         e.preventDefault()
-        const { name, size, age, typeOfPet, description } = this.state.formCreatePet
-        return MY_SERVICE.createAdoption({name, size, age, typeOfPet, description})
+        const { name, size, age, typeOfPet, description, dewormed, vaccine, sterilized, photoURL } = this.state.formCreatePet
+        return MY_SERVICE.createAdoption({name, size, age, typeOfPet, description, dewormed, vaccine, sterilized, photoURL})
         .then(() => {
           this.setState(prevState => ({
             ...prevState,
@@ -128,7 +139,11 @@ class MyProvider extends Component {
               size: '',
               age: '',
               typeOfPet: '',
-              description: ''
+              description: '',
+              dewormed: '',
+              vaccine: '',
+              sterilized: '',
+              photoURL: ''
             }
           }))
           alert('Mascota para adopción creada!')
@@ -167,7 +182,7 @@ class MyProvider extends Component {
             handleFile,
             handlePetSubmit,
             handleCreatePetInput,
-            showingPets
+            showingCats
          } = this
 
          return (
@@ -182,7 +197,7 @@ class MyProvider extends Component {
                     handleFile,
                     handlePetSubmit,
                     handleCreatePetInput,
-                    showingPets
+                    showingCats
                 }}
                 >
             {this.props.children}

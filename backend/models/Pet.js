@@ -8,6 +8,9 @@ const petSchema = new Schema(
     typeOfPet: String,
     description: String,
     age: String,
+    vaccine: String,
+    dewormed: String,
+    sterilized: String,
     giver: {
       type: Schema.Types.ObjectId,
       ref: 'User'

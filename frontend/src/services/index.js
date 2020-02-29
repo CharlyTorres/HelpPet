@@ -26,7 +26,11 @@ const MY_SERVICE = {
   },
 
   showingCats: async () => {
-    return await service.get('/adopt')
+    return await service.get('/cats')
+  },
+
+  showingDogs: async () => {
+    return await service.get('/dogs')
   },
 
   uploadPhoto: async photo => {
