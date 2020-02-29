@@ -18,7 +18,7 @@ function Adopt() {
    <Link to="/cats">
       <Button marginTop="10px" w="100%" size="lg" bg={customTheme.themeColors[400]} fontSize={["12px", "md", "lg", "xl"]}>Gatos</Button>
    </Link>
-    <Link to="/donate">
+    <Link to="/others">
       <Button marginTop="10px" w="100%" size="lg" bg={customTheme.themeColors[400]} fontSize={["12px", "md", "lg", "xl"]}>Otro tipo de mascotas</Button>
    </Link>
    </Stack>

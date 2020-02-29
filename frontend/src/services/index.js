@@ -33,6 +33,10 @@ const MY_SERVICE = {
     return await service.get('/dogs')
   },
 
+  showingOthers: async () => {
+    return await service.get('/others')
+  },
+
   uploadPhoto: async photo => {
     return await service.post('/upload', photo)
   }

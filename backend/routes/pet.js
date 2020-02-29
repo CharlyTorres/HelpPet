@@ -24,5 +24,12 @@ router.get('/dogs', (req, res, next) => {
     
 })
 
+router.get('/others', (req, res, next) => {
+  Pet.find({typeOfPet: 'other'})
+    .then((pet) => res.status(200).json({ pet }))
+    .catch((err) => res.status(500).json({ err }))
+    
+})
+
 
 module.exports = router;
