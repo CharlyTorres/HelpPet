@@ -18,7 +18,7 @@ function CatCard() {
     <Box>
       {context.state.cats.map(e => {
               return(
-          <Flex w="100%"  textAlign="center" justifyContent="center">
+          <Flex key={e._id} w="100%"  textAlign="center" justifyContent="center">
    <PseudoBox   rounded="md" w="80vw" bg={customTheme.themeColors[200]} marginBottom="20px">
                 <Flex justifyContent="center">
                 <Box w={["100%", "md", "lg", "40%"]}>
@@ -27,6 +27,7 @@ function CatCard() {
                 </Flex>
                 <Box textAlign="left">
                <Heading leftIcon={FaHeart} fontSize="20px">Nombre: {e.name}</Heading>
+               <Heading fontSize={["15px", "md", "lg", "xl"]}>Dueño: {e.giver.name}</Heading>
                
                <Heading fontSize={["15px", "md", "lg", "xl"]}>Edad: {e.age}</Heading>
                <Heading fontSize={["15px", "md", "lg", "xl"]}>Tamaño: {e.size}</Heading>

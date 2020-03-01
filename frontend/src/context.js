@@ -37,12 +37,15 @@ class MyProvider extends Component {
         others: [],
         loggedUser: null,
         isLogged: false,
+        adoptionPets: null
     }
 
-    componentDidMount(){
+    async componentDidMount(){
       this.showingCats()
       this.showingDogs()
       this.showingOthers()
+      const {adoptionPets} = await MY_SERVICE.adoptPopulate()
+      this.setState({adoptionPets: adoptionPets})
     }
 
     handleLogout = async () => {
@@ -189,7 +192,6 @@ class MyProvider extends Component {
             handleFile,
             handlePetSubmit,
             handleCreatePetInput,
-            showingCats
          } = this
 
          return (
@@ -204,7 +206,6 @@ class MyProvider extends Component {
                     handleFile,
                     handlePetSubmit,
                     handleCreatePetInput,
-                    showingCats
                 }}
                 >
             {this.props.children}

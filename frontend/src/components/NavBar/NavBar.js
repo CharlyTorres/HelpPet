@@ -8,10 +8,7 @@ import { MyContext } from '../../context'
 const styles = {
   style: {
     padding: '20px'
-  },
-  activeStyle: {
-    color: 'white'
-  },
+  }
 }
 
 export default function Navbar() {
@@ -28,14 +25,16 @@ export default function Navbar() {
           roundedBottomLeft="md" roundedBottomRight="md"
         >
             <NavLink {...styles} fontSize={["sm", "md", "lg", "xl"]} exact to="/">
+            <Flex w="100%" h="auto" alignItems="flex-end">
                 <img src="/images/logo.svg" alt="logo" width="50px"></img>
-                HelPet
+                Helpet
+              </Flex>
             </NavLink>
 
             <Menu >
         {({ isOpen }) => (
     <React.Fragment>
-      <MenuButton marginTop="35px" bg={customTheme.themeColors[400]} isActive={isOpen} as={Button} rightIcon="chevron-down">
+      <MenuButton marginTop="25px"  bg={customTheme.themeColors[400]} isActive={isOpen} as={Button} rightIcon="chevron-down">
         {isOpen ? "Cerrar" : "Menú"}
       </MenuButton>
       <MenuList>
@@ -43,29 +42,29 @@ export default function Navbar() {
       {!context.state.isLogged && (
         <>
         <MenuItem>        
-         <Link {...styles} fontSize={["sm", "md", "lg", "xl"]} exact to="/login">
+         <Link {...styles} fontSize={["sm", "md", "lg", "xl"]} to="/login">
                 Iniciar Sesión
          </Link>
         </MenuItem>
         <MenuItem to="/signup">        
-         <Link {...styles} fontSize={["sm", "md", "lg", "xl"]} exact to="/signup">
+         <Link {...styles} fontSize={["sm", "md", "lg", "xl"]} to="/signup">
                 Registrate
          </Link>
         </MenuItem>
         <MenuItem>        
-         <Link {...styles} fontSize={["sm", "md", "lg", "xl"]} exact to="/emergency">
+         <Link {...styles} fontSize={["sm", "md", "lg", "xl"]} to="/emergency">
                 Emergencia Patitas
          </Link>
         </MenuItem>
 
         <MenuItem>        
-         <Link {...styles} fontSize={["sm", "md", "lg", "xl"]} exact to="/adopt">
+         <Link {...styles} fontSize={["sm", "md", "lg", "xl"]} to="/adopt">
                 Adopta
          </Link>
         </MenuItem>
 
         <MenuItem>        
-         <Link {...styles} fontSize={["sm", "md", "lg", "xl"]} exact to="/give">
+         <Link {...styles} fontSize={["sm", "md", "lg", "xl"]} to="/give">
                 Da en adopción
          </Link>
         </MenuItem>
@@ -75,24 +74,24 @@ export default function Navbar() {
       {context.state.isLogged && (
         <>
         <MenuItem>        
-         <Link {...styles} fontSize={["sm", "md", "lg", "xl"]} exact to="/profile">
+         <Link {...styles} fontSize={["sm", "md", "lg", "xl"]} to="/profile">
                 Perfil
          </Link>
         </MenuItem>      
         <MenuItem>        
-         <Link {...styles} fontSize={["sm", "md", "lg", "xl"]} exact to="/emergency">
+         <Link {...styles} fontSize={["sm", "md", "lg", "xl"]} to="/emergency">
                 Emergencia Patitas
          </Link>
         </MenuItem>
 
         <MenuItem>        
-         <Link {...styles} fontSize={["sm", "md", "lg", "xl"]} exact to="/adopt">
+         <Link {...styles} fontSize={["sm", "md", "lg", "xl"]} to="/adopt">
                 Adopta
          </Link>
         </MenuItem>
 
         <MenuItem>        
-         <Link {...styles} fontSize={["sm", "md", "lg", "xl"]} exact to="/give">
+         <Link {...styles} fontSize={["sm", "md", "lg", "xl"]} to="/give">
                 Da en adopción
          </Link>
         </MenuItem>

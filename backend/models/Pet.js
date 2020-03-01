@@ -19,7 +19,7 @@ const petSchema = new Schema(
       type: String,
       default:
         'https://www.brantcountyspca.com/wp-content/uploads/cache/images/remote/i0-wp-com/animals-4133566325.jpg'
-    },
+    }
   },
   {
     timestamps: true,

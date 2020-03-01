@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext,useEffect} from 'react';
 import { MyContext } from '../context'
 import { FaDog, FaCat, FaDragon, FaImage } from "react-icons/fa";
 import {
@@ -12,7 +12,13 @@ import {
 } from '@chakra-ui/core'
 import Form from '../components/Form'
 
-function Give() {
+function Give({history}) {
+
+  const context = useContext(MyContext)
+  useEffect(() => {
+    if (!context.state.isLogged) return history.push('/login')
+  })
+
   return (
     <MyContext.Consumer>
     {context =>

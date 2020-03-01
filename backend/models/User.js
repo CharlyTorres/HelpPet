@@ -15,7 +15,7 @@ const userSchema = new Schema(
     animals: [
       {
         type: Schema.Types.ObjectId,
-        ref: 'Animal'
+        ref: 'Pet'
       }
     ]
   },

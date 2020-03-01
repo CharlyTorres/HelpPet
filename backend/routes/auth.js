@@ -10,8 +10,15 @@ router.post('/signup', (req, res, next) => {
     .catch((err) => res.status(500).json({ err }));
 });
 
-router.post('/login', passport.authenticate('local'), (req, res, next) => {
-  const { user } = req;
+router.post('/login', passport.authenticate('local'), async (req, res, next) => {
+  const { _id } = req.user
+  const user = await User.findById(_id).populate({
+    path: 'animals',
+    populate: {
+      path: 'giver',
+      model: 'User'
+    }
+  })
   res.status(200).json({ user });
 });
 
