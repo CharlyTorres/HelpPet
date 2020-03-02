@@ -6,8 +6,11 @@ import { BrowserRouter } from 'react-router-dom'
 import { ThemeProvider, CSSReset } from '@chakra-ui/core'
 import * as serviceWorker from './serviceWorker';
 import MyProvider from './context'
+import mapboxgl from 'mapbox-gl'
 
 import theme from './theme'
+
+mapboxgl.accessToken = 'pk.eyJ1IjoiY3J1dXNoIiwiYSI6ImNrN2FyZ3o2ZTE1cXQzZ28ybW96ZHYzaHUifQ.mdO37dcPxW4TFmaZUyZVfw';
 
 function WithTheme() {
   return (

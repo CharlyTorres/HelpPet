@@ -1,6 +1,6 @@
 import React from 'react'
 import { MyContext } from '../../context'
-import { Box, Image, Flex, Button, PseudoBox, Heading, Avatar, Popover, PopoverArrow, PopoverTrigger, PopoverContent, PopoverCloseButton, PopoverBody,PopoverHeader} from '@chakra-ui/core'
+import { Box, Image, Flex, PseudoBox, Heading} from '@chakra-ui/core'
 import { FaHeart } from "react-icons/fa";
 import customTheme from '../../theme'
 

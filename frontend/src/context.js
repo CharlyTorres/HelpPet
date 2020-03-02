@@ -145,7 +145,7 @@ class MyProvider extends Component {
         e.preventDefault()
         const { name, size, age, typeOfPet, description, dewormed, vaccine, sterilized, photoURL } = this.state.formCreatePet
         return MY_SERVICE.createAdoption({name, size, age, typeOfPet, description, dewormed, vaccine, sterilized, photoURL})
-        .then(() => {
+        .then(({data}) => {
           this.setState(prevState => ({
             ...prevState,
             formCreatePet: {
@@ -160,6 +160,14 @@ class MyProvider extends Component {
               photoURL: ''
             }
           }))
+          this.setState({
+            loggedUser: data.user,
+            isLogged: true
+          })
+          this.showingCats()
+          this.showingDogs()
+          this.showingOthers()
+          this.showingInProfile()
           alert('Mascota para adopción creada!')
           this.props.history.push('/adopt')
         })

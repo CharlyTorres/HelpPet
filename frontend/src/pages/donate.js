@@ -1,8 +1,11 @@
 import React from 'react';
-
+import Map from '../components/mapbox/map'
+import { Flex } from '@chakra-ui/core'
 function Donate() {
   return (
-   <h1>Donate!</h1>
+    <Flex w="100%" justifyContent="center">
+   <Map></Map>
+   </Flex>
   );
 }
 
