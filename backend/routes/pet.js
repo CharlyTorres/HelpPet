@@ -8,9 +8,10 @@ router.post('/give', async (req, res, next) => {
   const {_id} = req.user
   const petCreated = await Pet.create({name, size, age, typeOfPet, description, photoURL, dewormed, vaccine, sterilized, giver: _id})
   const petPopulated = await (await Pet.findById(petCreated._id)).populate('giver')
-  const user = await User.findOneAndUpdate(
+  const user = await User.findByIdAndUpdate(
     _id,
     { $push: { animals: petCreated._id } },
+    { new: true }
   ).populate({
     path: 'animals',
     populate: {
@@ -42,9 +43,9 @@ router.get('/others', async (req, res, next) => {
     
 })
 
-router.get('/adoptionpets', async (req, res, next) => {
-  const pets = await Pet.find()
-    .populate('giver')
+router.get('/adoptprofile', async (req, res, next) => {
+  const pets = await User.find()
+    .populate('animals')
   res.status(200).json({ pets })
 })
 

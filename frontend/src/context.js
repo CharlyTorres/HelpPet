@@ -35,17 +35,16 @@ class MyProvider extends Component {
         cats: [],
         dogs: [],
         others: [],
+        adoptionPets: [],
         loggedUser: null,
         isLogged: false,
-        adoptionPets: null
     }
 
     async componentDidMount(){
       this.showingCats()
       this.showingDogs()
       this.showingOthers()
-      const {adoptionPets} = await MY_SERVICE.adoptPopulate()
-      this.setState({adoptionPets: adoptionPets})
+      this.showingInProfile()
     }
 
     handleLogout = async () => {
@@ -111,6 +110,11 @@ class MyProvider extends Component {
     showingOthers = async () => {
       const {data}  = await MY_SERVICE.showingOthers();
       this.setState({ others: data.pet });
+    }
+
+    showingInProfile = async () => {
+      const {data}  = await MY_SERVICE.adoptProfile();
+      this.setState({ adoptionPets: data.pet });
     }
     
     handleLoginSubmit = e => {

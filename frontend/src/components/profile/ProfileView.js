@@ -1,11 +1,12 @@
 import React from 'react'
 import { MyContext } from '../../context'
-import { Box, Image, Flex, Input, Button } from '@chakra-ui/core'
+import { Box, Image, Flex, Input, Button, Heading } from '@chakra-ui/core'
 import { FaCloudUploadAlt } from "react-icons/fa";
 import customTheme from '../../theme'
+import PetProfileCard from '../Pet/Profile'
 
 
-function ProfileView() {
+function ProfileView({user}) {
   const changePic = () => {
     document.getElementById('profilePic').click()
   }
@@ -15,7 +16,8 @@ function ProfileView() {
         if (!context.state.loggedUser) return null
         else {
         return (
-          <Flex w="100%" alignContent="center" justifyContent="center">
+          <Flex flexDirection="column" w="100%" alignContent="center" justifyContent="center">
+          <Flex w="100%" justifyContent="center">
           <Box maxW="sm" borderWidth="1px" rounded="lg" overflow="hidden">
             <Image
               src={context.state.loggedUser.photoURL}
@@ -27,7 +29,11 @@ function ProfileView() {
             <h1>Estado: {context.state.loggedUser.state}</h1>
             <h1>Edad: {context.state.loggedUser.age} años</h1>
             </Box>
-          
+            </Flex>
+          <Box>
+          <Heading>Tus mascotas en adopción</Heading>
+          <PetProfileCard></PetProfileCard>
+          </Box>
          </Flex>
 
         )}

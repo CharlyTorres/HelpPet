@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
+const Pet = require('../models/Pet');
 const passport = require('../config/passport');
 const uploadCloud = require('../config/cloudinary')
 
@@ -11,13 +12,11 @@ router.post('/signup', (req, res, next) => {
 });
 
 router.post('/login', passport.authenticate('local'), async (req, res, next) => {
-  const { _id } = req.user
-  const user = await User.findById(_id).populate({
+  const user = await User.findById(req.user).populate({
     path: 'animals',
     populate: {
       path: 'giver',
-      model: 'User'
-    }
+      model: 'User' }
   })
   res.status(200).json({ user });
 });
