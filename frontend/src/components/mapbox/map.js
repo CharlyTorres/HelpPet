@@ -23,16 +23,25 @@ import mapboxgl from 'mapbox-gl'
         zoom: map.getZoom().toFixed(2)
         });
         });
-       new mapboxgl.Marker()
-            .setLngLat([-99.1632, 19.4215])
-            .addTo(map)
+         const popup = new mapboxgl.Popup({ offset: 25 }).setText(
+          ' Tonalá 10 colonia Roma Norte C.P 06700.'
+          );
+          
+          const el = document.createElement('div');
+          el.id = 'marker';
+
+        new mapboxgl.Marker(el)
+        .setLngLat([-99.1632, 19.4215])
+        .setPopup(popup)
+        .addTo(map)
+
     }
   
 
   
   render() {
     return (
-      <div className="flex">
+      <div>
       <div ref={el => this.mapContainer = el} className='mapContainer1' />
       </div>
     )

@@ -12,6 +12,7 @@ class MyProvider extends Component {
             email: '',
             state: '',
             age: '',
+            tel: '',
             password: ''
         },
 
@@ -76,8 +77,8 @@ class MyProvider extends Component {
 
     handleSignupSubmit = async e => {
         e.preventDefault()
-        const { name, email, password, age, state } = this.state.formSignup
-        MY_SERVICE.signup({ name, email, password, age, state })
+        const { name, email, password, age, state, tel } = this.state.formSignup
+        MY_SERVICE.signup({ name, email, password, age, state, tel })
           .then((res) => {
             this.setState(prevState => ({
               ...prevState,
@@ -86,7 +87,8 @@ class MyProvider extends Component {
                 email: '',
                 state: '',
                 age: '',
-                password: ''
+                password: '',
+                tel: ''
               }
             }))
             alert('Cuenta creada, porfavor Inicia Sesión')

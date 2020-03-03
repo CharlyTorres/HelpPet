@@ -85,42 +85,51 @@ function Give({history}) {
       <FormControl>
         <InputGroup>
         <InputLeftAddon children={<Box as={FaImage} />} />
-          <Input
+          <Select
             onChange={context.handleCreatePetInput}
             value= {context.state.formCreatePet.vaccine}
             fontSize={["8px", "md", "lg", "xl"]}
             placeholder="Está vacunado?"
             name="vaccine"
             type="text"
-         />
+         >
+           <option value="Si">Si</option>
+           <option value="No">No</option>
+         </Select>
         </InputGroup>
       </FormControl>
 
       <FormControl>
         <InputGroup>
         <InputLeftAddon children={<Box as={FaImage} />} />
-          <Input
+          <Select
             onChange={context.handleCreatePetInput}
             value= {context.state.formCreatePet.sterilized}
             fontSize={["8px", "md", "lg", "xl"]}
             placeholder="Está esterilizado?"
             name="sterilized"
             type="text"
-         />
+         >
+           <option value="Si">Si</option>
+           <option value="No">No</option>
+         </Select>
         </InputGroup>
       </FormControl>
 
       <FormControl>
         <InputGroup>
         <InputLeftAddon children={<Box as={FaImage} />} />
-          <Input
+          <Select
             onChange={context.handleCreatePetInput}
             value= {context.state.formCreatePet.dewormed}
             fontSize={["8px", "md", "lg", "xl"]}
-            placeholder="Está desparazitado?"
+            placeholder="Está desparacitado?"
             name="dewormed"
             type="text"
-         />
+         >
+           <option value="Si">Si</option>
+           <option value="No">No</option>
+         </Select>
         </InputGroup>
       </FormControl>
 

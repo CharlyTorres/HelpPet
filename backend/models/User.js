@@ -11,6 +11,7 @@ const userSchema = new Schema(
         'https://cdn3.iconfinder.com/data/icons/essential-rounded/64/Rounded-31-512.png'
     },
     age: String,
+    tel: String,
     state: String,
     animals: [
       {

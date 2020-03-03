@@ -1,6 +1,6 @@
 import React from 'react';
 import Map from '../components/mapbox/map'
-import { Flex, Box, Link } from '@chakra-ui/core'
+import { Flex, Box } from '@chakra-ui/core'
 import customTheme from '../theme'
 
 
