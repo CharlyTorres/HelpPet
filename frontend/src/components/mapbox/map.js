@@ -4,7 +4,7 @@ import mapboxgl from 'mapbox-gl'
 
   class Map extends Component {
     state = {
-      lng: -99.1635,
+      lng: -99.1632,
       lat: 19.4215,
       zoom: 15
     }
@@ -24,7 +24,7 @@ import mapboxgl from 'mapbox-gl'
         });
         });
        new mapboxgl.Marker()
-            .setLngLat([-99.1635, 19.4215])
+            .setLngLat([-99.1632, 19.4215])
             .addTo(map)
     }
   
@@ -32,13 +32,8 @@ import mapboxgl from 'mapbox-gl'
   
   render() {
     return (
-      <div>
-      <div className='sidebarStyle'>
-      <div>Longitude: {this.state.lng} | Latitude: {this.state.lat} | Zoom: {this.state.zoom}</div>
-      </div>
-      <div id="map-leaflet" className="map">
-      </div>
-      <div ref={el => this.mapContainer = el} className='mapContainer' />
+      <div className="flex">
+      <div ref={el => this.mapContainer = el} className='mapContainer1' />
       </div>
     )
   }

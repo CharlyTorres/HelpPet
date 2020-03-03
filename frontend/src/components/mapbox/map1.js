@@ -31,8 +31,6 @@ import mapboxgl from 'mapbox-gl'
   render() {
     return (
       <div>
-      <div className='sidebarStyle'>
-      </div>
       <div ref={el => this.mapContainer = el} className='mapContainer' />
       </div>
     )
