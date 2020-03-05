@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = 'http://localhost:3000/'
+const baseURL = 'https://hel-pet.herokuapp.com'
 
 const service = axios.create({
   baseURL,
